@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기</title>
+    <!-- cdn추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--computed속성 메소드와 다른점 : 시작할 때 바로 1번만 연산되서 저장됨. 메소드는 호출될때마다-->
+        <button @click="changeMessage">click</button>
+        {{ reversedMessage }}
+        <!--함수를 사용할 땐 ()를 붙힘-->
+        <!--{{ reversedMessage() }} -->
+
+    </div>
+    <script>
+        //vue 인스턴스 생성
+        new Vue({
+            el:'#app',
+            data:{
+                message : 'hello'
+            },
+            methods:{
+                //reversedMessage(){
+                //    return this.message.split('').reverse().join('');
+                //}
+                changeMessage(){
+                    this.message = '안녕하세요';
+                }
+            },
+            computed:{
+                reversedMessage(){
+                    return this.message.split('').reverse().join('');
+                }
+            }
+        })
+    </script>
+</body>
+</html>

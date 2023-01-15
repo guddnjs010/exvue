@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기</title>
+    <!-- cdn추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- watch속성 : 감시자역할. 대부분의 상황에서 computed속성을 쓰는게 좋음-->
+        {{ message }}       
+        <button @click="changeMessage">click</button><br>
+        {{updated}}
+
+
+    </div>
+    <script>
+        //vue 인스턴스 생성
+        new Vue({
+            el:'#app',
+            data:{
+                message : 'hello',
+                updated: '아니요'
+            },
+            methods:{
+                changeMessage(){
+                    this.message = '안녕하세요';
+                }
+            },
+            computed:{
+                reversedMessage(){
+                    return this.message.split('').reverse().join('');
+                }
+            },
+            watch:{
+                //data속성의 변경하고자 하는 같은 속성의 이름을 적어줌
+                message(newVal, oldVal){
+                    console.log(newVal, oldVal);
+                    this.updated='네';
+                }
+            }
+        })
+    </script>
+</body>
+</html>
