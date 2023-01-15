@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기</title>
+    <!-- cdn추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ year }}
+        <!-- event : --><br>
+        <button v-on:click="plus">더하기</button>
+        <button v-on:click="minus">빼기</button>
+        <br>
+        <form v-on:submit.prevent="submit">
+            <!--v-on:keyup -> @keyup-->
+            <!--<input type="text" :value="text" @keyup="updateText"><br> -->
+            <input type="text" v-model="text"><br>
+            미리보기 : {{text}}<br>
+            <button type="submit">submit</button>
+
+        </form>
+
+    </div>
+    <script>
+        //vue 인스턴스 생성
+        new Vue({
+            el:'#app',
+            data:{
+                year: 2023,
+                text: 'text'
+            },
+            methods:{
+                plus(){
+                    this.year++;
+                },
+                minus(){
+                    this.year--;
+                },
+                submit(){
+                    alert('submit완료');
+                    console.log('hello console');
+                },
+                //@keyup 이벤트에서 event를 자동으로 넣어줌
+                //updateText(event){
+                //    this.text= event.target.value;
+                //}
+            }
+        })
+    </script>
+</body>
+</html>
