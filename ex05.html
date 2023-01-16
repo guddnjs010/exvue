@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기</title>
+    <style>
+        .red{
+            color: red;
+        }
+        .bold{
+            font-weight: bold;
+        }
+    </style>
+    <!-- cdn추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{name}}<br>
+        <button @click="changeText">Click</button>
+    </div>
+    <div id="app-1">
+        {{name}}<br>
+        <button @click="changeText">Click</button>
+    </div>
+    <script>
+        //vue 인스턴스 여러개 생성
+        const app = new Vue({
+            el:'#app',
+            data:{
+                name: '형원'
+            },
+            methods:{
+                changeText(){
+                    //다른 인스턴스의 내용을 바꿀 때
+                    app1.name = '형원updated';
+                }
+            }
+        })
+
+        const app1 = new Vue({
+            el:'#app-1',
+            data:{
+                name: '형원-1'
+            },
+            methods:{
+                changeText(){
+                    this.name = '형원-1 updated';
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰 기초 익히기</title>
+    <style>
+        .red{
+            color: red;
+        }
+        .bold{
+            font-weight: bold;
+        }
+    </style>
+    <!-- cdn추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- v-if문 true일때 실행 -->
+        <!-- <template v-if="number ===1">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </template>
+        <div v-else-if="number ===2">Hi</div>
+        <div v-else>No</div><br> -->
+        <!--true 일 때 보여줌-->
+        <div v-show="show">Yes</div>
+        <!-- <button @click="increaseNumber">Increase</button>{{ number }} -->
+        <button @click="toggle">Toggle</button>
+    </div>
+    <script>
+        //vue 인스턴스 생성
+        new Vue({
+            el:'#app',
+            data:{
+                //number : 1
+                show : false
+            },
+            methods:{
+                /* increaseNumber(){
+                    this.number++;
+                } */
+                toggle(){
+                    this.show=!this.show;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
